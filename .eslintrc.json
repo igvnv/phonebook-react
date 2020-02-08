@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": ["jsx-a11y", "prettier"],
+  "rules": {
+    "react/jsx-props-no-spreading": 0,
+    "import/no-named-as-default": 0,
+    "react/jsx-one-expression-per-line": 0
+  }
+}
+
+// {
+//   "env": {
+//     "browser": true,
+//     "es6": true,
+//     "jest": true
+//   },
+//   "extends": ["airbnb", "eslint:recommended", "airbnb/hooks", "prettier"],
+//   "parser": "babel-eslint",
+//   "plugins": ["react", "react-hooks", "promise", "prettier"],
+//   "rules": {
+//     "react/jsx-props-no-spreading": 0,
+//     "import/no-named-as-default": 0,
+//     "react/jsx-one-expression-per-line": 0
+//   }
+// }
