@@ -1,0 +1,12 @@
+.contacts-list {
+  padding: 32px;
+}
+
+.contacts-list__item {
+  display: block;
+  padding-top: 16px;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}

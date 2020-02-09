@@ -1,0 +1,22 @@
+.search {
+  align-items: center;
+  background: linear-gradient(180deg, #277d8f 22.92%, #278f89 100%);
+  display: grid;
+  grid-template-areas: 'search-form' 'alphabet';
+  grid-template-rows: 1fr max-content;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+}
+
+.search_minimized {
+  height: auto;
+}
+
+.search_typing {
+  background: none;
+  grid-template-areas: 'search-form' 'search-result';
+  grid-template-rows: 64px 1fr;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}

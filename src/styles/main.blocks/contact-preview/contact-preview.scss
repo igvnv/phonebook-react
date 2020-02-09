@@ -1,0 +1,30 @@
+.contact-preview {
+  align-items: center;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 48px 1fr;
+}
+
+.contact-preview__image {
+  background: #cdcdcd;
+  border-radius: 50%;
+  height: 48px;
+  object-fit: cover;
+  width: 48px;
+}
+
+.contact-preview__name {
+  font-family: $default-font;
+  font-style: normal;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 150%;
+}
+
+.contact-preview__first-name {
+  padding-right: 0.3em;
+}
+
+.contact-preview__last-name {
+  font-weight: bold;
+}

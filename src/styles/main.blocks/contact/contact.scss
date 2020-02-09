@@ -1,0 +1,26 @@
+.contact {
+  padding: 50px 24px 45px;
+}
+
+.contact__photo {
+  padding-bottom: 34px;
+  text-align: center;
+}
+
+.contact__photo-image {
+  background: #cdcdcd;
+  border-radius: 64px;
+  height: 128px;
+  object-fit: cover;
+  width: 128px;
+}
+
+.contact__name {
+  font-family: $default-font;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 150%;
+  margin: 0;
+  padding-bottom: 30px;
+  text-align: center;
+}

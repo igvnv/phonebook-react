@@ -1,0 +1,48 @@
+.popup {
+  background: #fff;
+  box-sizing: border-box;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  z-index: 10;
+}
+
+.popup_with-close-button {
+  padding-bottom: 48px;
+}
+
+.popup__close-icon {
+  background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 3.45374L8.54626 10L2 16.5463L3.45374 18L10 11.4537L16.5463 18L18 16.5463L11.4537 10L18 3.45374L16.5463 2L10 8.54626L3.45374 2L2 3.45374Z' fill='%23E5E5E5'/%3E%3C/svg%3E%0A")
+    no-repeat;
+  cursor: pointer;
+  height: 20px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 20px;
+  z-index: 11;
+}
+
+.popup__close-button {
+  background: #fff;
+  border: none;
+  bottom: 0;
+  box-sizing: border-box;
+  color: #278f89;
+  cursor: pointer;
+  display: block;
+  font-family: $default-font;
+  font-size: 16px;
+  font-weight: bold;
+  left: 0;
+  line-height: 150%;
+  padding: 0 24px 24px;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}

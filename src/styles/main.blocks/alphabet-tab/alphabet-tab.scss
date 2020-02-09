@@ -1,0 +1,27 @@
+.alphabet-tab {
+  color: #fff;
+  font-family: $default-font;
+  font-size: 22px;
+  font-weight: 300;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 20px;
+}
+
+.alphabet-tab_selected {
+  position: relative;
+
+  &:after {
+    content: '';
+    border: 1px solid rgba(#fff, 0.5);
+    border-radius: 22px;
+    display: block;
+    height: 40px;
+    left: -10px;
+    position: absolute;
+    top: -10px;
+    width: 40px;
+  }
+}
