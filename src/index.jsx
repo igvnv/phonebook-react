@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import App from './App';
 import Config from './components/Config';
+import configureStore from './store/configureStore';
 
 // Setting the app title
 document.title = Config.title;
@@ -17,4 +19,11 @@ const viewportUnitsHelper = () => {
 window.addEventListener('resize', viewportUnitsHelper);
 viewportUnitsHelper();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configureStore();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);

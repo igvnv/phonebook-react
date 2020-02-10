@@ -1,0 +1,115 @@
+export const contact1 = Object.freeze({
+  gender: 'female',
+  name: { title: 'Miss', first: 'Mae', last: 'Wilson' },
+  location: {
+    street: { number: 1603, name: 'Bollinger Rd' },
+    city: 'Scottsdale',
+    state: 'West Virginia',
+    country: 'United States',
+    postcode: 14025,
+    coordinates: { latitude: '77.2542', longitude: '161.9246' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi',
+    },
+  },
+  email: 'mae.wilson@example.com',
+  login: {
+    uuid: 'af3b20df-0757-483e-b198-fa022b050d8c',
+    username: 'orangezebra697',
+    password: 'magneto',
+    salt: 'DwEFo39g',
+    md5: 'ab7b85f356a392e043e143333b7f4acd',
+    sha1: 'bd54cedec6c7d2af66abfa42887a025c1c699af4',
+    sha256: 'fbe71cee3e1e5020bf2e651a210091ba204344fac064ab1206ba7633f1ed6f28',
+  },
+  dob: { date: '1945-03-11T15:05:03.658Z', age: 75 },
+  registered: { date: '2005-04-27T11:21:42.859Z', age: 15 },
+  phone: '(703)-085-7488',
+  cell: '(184)-643-8073',
+  id: { name: 'SSN', value: '593-14-9411' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/women/12.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/women/12.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/women/12.jpg',
+  },
+  nat: 'US',
+});
+
+export const contact2 = Object.freeze({
+  gender: 'male',
+  name: { title: 'Mr', first: 'Adrian', last: 'Kim' },
+  location: {
+    street: { number: 5051, name: 'Bollinger Rd' },
+    city: 'Chandler',
+    state: 'Washington',
+    country: 'United States',
+    postcode: 16680,
+    coordinates: { latitude: '62.1295', longitude: '-145.1684' },
+    timezone: {
+      offset: '-7:00',
+      description: 'Mountain Time (US & Canada)',
+    },
+  },
+  email: 'adrian.kim@example.com',
+  login: {
+    uuid: '072802e1-123c-4691-be28-8012b3e9ddc4',
+    username: 'blackleopard567',
+    password: 'talisman',
+    salt: 'ejoVAJfC',
+    md5: '47d274180ab81ee8c90ebee063b62b4f',
+    sha1: 'de29ee951629313c282d6d1dc14820b7d6e46fd3',
+    sha256: '00810efaef0bdab4ca7209cd893ebb22718826804939064aa7ddb756f577c28b',
+  },
+  dob: { date: '1947-08-20T07:17:20.233Z', age: 73 },
+  registered: { date: '2003-05-31T02:18:50.904Z', age: 17 },
+  phone: '(729)-688-7285',
+  cell: '(841)-263-1517',
+  id: { name: 'SSN', value: '949-57-8704' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/14.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/14.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/14.jpg',
+  },
+  nat: 'US',
+});
+
+export const contact3 = Object.freeze({
+  gender: 'male',
+  name: { title: 'Mr', first: 'Travis', last: 'Castro' },
+  location: {
+    street: { number: 2672, name: 'Daisy Dr' },
+    city: 'Augusta',
+    state: 'Kansas',
+    country: 'United States',
+    postcode: 60491,
+    coordinates: { latitude: '-87.0590', longitude: '-4.1729' },
+    timezone: {
+      offset: '-7:00',
+      description: 'Mountain Time (US & Canada)',
+    },
+  },
+  email: 'travis.castro@example.com',
+  login: {
+    uuid: 'f2342048-62e9-4494-ac15-c9bdefe695c4',
+    username: 'biggoose812',
+    password: 'rush2112',
+    salt: 'yj3KqLt4',
+    md5: '1cb538b7cc220571e7db8b5920d9bb68',
+    sha1: '941593d0a2180d97993027b1469516ad89d8a54c',
+    sha256: 'a490df400bd1b5c895ec389130a1fba72094e281d25a7f6fd6f3a8fb56190c75',
+  },
+  dob: { date: '1976-01-06T15:36:50.078Z', age: 44 },
+  registered: { date: '2014-12-22T00:11:10.604Z', age: 6 },
+  phone: '(999)-353-7213',
+  cell: '(285)-644-6397',
+  id: { name: 'SSN', value: '092-96-8642' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/81.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/81.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/81.jpg',
+  },
+  nat: 'US',
+});
+
+export default [contact1, contact2, contact3];
