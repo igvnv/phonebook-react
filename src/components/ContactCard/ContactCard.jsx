@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import contactPropType from '../../types/contact';
@@ -13,12 +13,22 @@ import PhoneLink from '../PhoneLink';
  * }}
  */
 const ContactCard = ({ contact, onClose }) => {
+  const popupRef = useRef();
+
   const onCloseHandler = () => {
     onClose(contact);
   };
 
+  /**
+   * Position popup on the center of visible area.
+   */
+  useEffect(() => {
+    if (!popupRef || !popupRef.current) return;
+    popupRef.current.style.top = `${window.innerHeight / 2 + window.scrollY}px`;
+  }, [contact, popupRef]);
+
   return (
-    <div className="popup popup_with-close-button">
+    <div className="popup popup_with-close-button" ref={popupRef}>
       <span
         className="popup__close-icon"
         role="button"
