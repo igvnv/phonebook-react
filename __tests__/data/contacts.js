@@ -112,4 +112,42 @@ export const contact3 = Object.freeze({
   nat: 'US',
 });
 
+export const contact4 = Object.freeze({
+  gender: 'male',
+  name: { title: 'Mr', first: 'Antonio', last: 'Castro' },
+  location: {
+    street: { number: 2672, name: 'Daisy Dr' },
+    city: 'Augusta',
+    state: 'Kansas',
+    country: 'United States',
+    postcode: 60491,
+    coordinates: { latitude: '-87.0590', longitude: '-4.1729' },
+    timezone: {
+      offset: '-7:00',
+      description: 'Mountain Time (US & Canada)',
+    },
+  },
+  email: 'travis.castro@example.com',
+  login: {
+    uuid: 'f2342048-62e9-4494-ac15-c9bdefe695c5',
+    username: 'biggoose813',
+    password: 'rush2112',
+    salt: 'yj3KqLt4',
+    md5: '1cb538b7cc220571e7db8b5920d9bb68',
+    sha1: '941593d0a2180d97993027b1469516ad89d8a54c',
+    sha256: 'a490df400bd1b5c895ec389130a1fba72094e281d25a7f6fd6f3a8fb56190c75',
+  },
+  dob: { date: '1976-01-06T15:36:50.078Z', age: 44 },
+  registered: { date: '2014-12-22T00:11:10.604Z', age: 6 },
+  phone: '(999)-353-7214',
+  cell: '(285)-644-6397',
+  id: { name: 'SSN', value: '092-96-8643' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/81.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/81.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/81.jpg',
+  },
+  nat: 'US',
+});
+
 export default [contact1, contact2, contact3];

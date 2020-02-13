@@ -5,14 +5,26 @@
   font-weight: 300;
   height: 20px;
   line-height: 20px;
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   width: 20px;
+
+  &:focus {
+    @extend .alphabet-tab_selected;
+
+    outline: none;
+    &:after {
+      box-shadow: 0 0 4px rgba(#fff, 0.5);
+    }
+  }
+}
+
+.alphabet-tab_disabled {
+  display: none;
 }
 
 .alphabet-tab_selected {
-  position: relative;
-
   &:after {
     content: '';
     border: 1px solid rgba(#fff, 0.5);
@@ -24,4 +36,23 @@
     top: -10px;
     width: 40px;
   }
+}
+
+.alphabet-tab__counter {
+  bottom: -12px;
+  color: rgba(#fff, 0.5);
+  font-family: $default-font;
+  font-size: 9px;
+  left: 50%;
+  line-height: 11px;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.alphabet-tab__counter_selected {
+  background: #fff;
+  color: #277d8f;
+  padding: 0 5px;
+  border-radius: 5px;
 }
