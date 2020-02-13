@@ -8,12 +8,6 @@
   position: relative;
 }
 
-.search-form-input_minimized,
-.search-form-input_typing {
-  border-bottom: none;
-  padding: 20px 0;
-}
-
 .search-form-input__label {
   color: #fff;
   cursor: pointer;
@@ -26,12 +20,6 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.search-form-input__label_minimized,
-.search-form-input__label_typing {
-  font-size: 16px;
-  margin-top: 0px;
 }
 
 .search-form-input__input {

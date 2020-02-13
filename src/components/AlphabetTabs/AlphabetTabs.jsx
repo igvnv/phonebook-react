@@ -80,6 +80,9 @@ const AlphabetTabs = ({ selectedLetter, onSelect: onTabSelect }) => {
    * @param {string} letter
    */
   function toggleLetter(letter) {
+    // Skips clicks on tabs without contacts
+    if (!lettersCounter[letter]) return;
+
     onTabSelect(letter !== selectedLetter ? letter : '');
   }
 
@@ -89,7 +92,7 @@ const AlphabetTabs = ({ selectedLetter, onSelect: onTabSelect }) => {
         <span
           key={letter}
           role="button"
-          tabIndex="0"
+          tabIndex={lettersCounter[letter] > 0 ? 0 : -1}
           onClick={() => toggleLetter(letter)}
           onKeyPress={() => toggleLetter(letter)}
           className={bemSelector('alphabet-tab', null, [
@@ -98,7 +101,7 @@ const AlphabetTabs = ({ selectedLetter, onSelect: onTabSelect }) => {
           ])}
         >
           {letter}
-          {lettersCounter[letter] && (
+          {lettersCounter[letter] > 0 && (
             <span
               className={`alphabet-tab__counter
               ${

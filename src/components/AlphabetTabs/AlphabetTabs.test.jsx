@@ -129,7 +129,7 @@ describe('AlphabetTabs component', () => {
     ).toBeTruthy();
   });
 
-  it('calls onSelect(letter) on clock on a letter', () => {
+  it('calls onSelect(letter) on click on a letter', () => {
     const store = mockStore({
       contacts: { data: contactsList, state: LoadingStates.DONE },
     });
@@ -143,14 +143,14 @@ describe('AlphabetTabs component', () => {
 
     wrapper
       .find('.alphabet-tab')
-      .findWhere((el) => el.text()[0] === 'q')
+      .findWhere((el) => el.text()[0] === 'w')
       .at(0)
       .simulate('click');
 
-    expect(onSelect.mock.calls).toEqual([['q']]);
+    expect(onSelect.mock.calls).toEqual([['w']]);
   });
 
-  it("calls onSelect('') on clock on selected letter", () => {
+  it("calls onSelect('') on click on selected letter", () => {
     const store = mockStore({
       contacts: { data: contactsList, state: LoadingStates.DONE },
     });
@@ -158,16 +158,37 @@ describe('AlphabetTabs component', () => {
     const onSelect = jest.fn();
     const wrapper = mount(
       <Provider store={store}>
-        <AlphabetTabs onSelect={onSelect} selectedLetter="q" />
+        <AlphabetTabs onSelect={onSelect} selectedLetter="w" />
       </Provider>
     );
 
     wrapper
       .find('.alphabet-tab')
-      .findWhere((el) => el.text()[0] === 'q')
+      .findWhere((el) => el.text()[0] === 'w')
       .at(0)
       .simulate('click');
 
     expect(onSelect.mock.calls).toEqual([['']]);
+  });
+
+  it("doesn't call onSelect on click on a letter without counter", () => {
+    const store = mockStore({
+      contacts: { data: contactsList, state: LoadingStates.DONE },
+    });
+
+    const onSelect = jest.fn();
+    const wrapper = mount(
+      <Provider store={store}>
+        <AlphabetTabs onSelect={onSelect} selectedLetter="" />
+      </Provider>
+    );
+
+    wrapper
+      .find('.alphabet-tab')
+      .findWhere((el) => el.text()[0] === 'a')
+      .at(0)
+      .simulate('click');
+
+    expect(onSelect.mock.calls.length).toEqual(0);
   });
 });

@@ -1,0 +1,9 @@
+.contacts-list {
+  background: #fff;
+  display: grid;
+  grid-gap: 40px 20px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}

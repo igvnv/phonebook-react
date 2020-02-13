@@ -3,10 +3,16 @@
 }
 
 .contacts-list__item {
+  cursor: pointer;
   display: block;
-  padding-top: 16px;
+  transition: box-shadow 0.2s, background-color 0.2s;
 
   &:first-child {
     padding-top: 0;
+  }
+
+  &:hover {
+    background: #ebebeb;
+    box-shadow: 0 0 0 5px #ebebeb;
   }
 }

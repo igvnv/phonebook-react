@@ -1,0 +1,6 @@
+.popup {
+  box-shadow: 0 10px 20px rgba(#000, 0.2);
+  max-height: 100vh;
+  max-height: calc(var(--vh, 1vh) * 100);
+  width: 400px;
+}

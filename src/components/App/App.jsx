@@ -13,7 +13,7 @@ function App() {
   const [minimizedSearchBox, setMinimizedSearchBox] = useState('');
 
   return (
-    <div>
+    <div className="wrapper">
       <SearchBox
         onSearch={(filter) => {
           setFilterByLetter(filter ? filter.letter : '');
@@ -23,7 +23,7 @@ function App() {
       />
       {minimizedSearchBox && !(filterByLetter || filterByQuery) && (
         <div className="search-result search-result_alert">
-          <div className="search-result-alert">Start typing a name111</div>
+          <div className="search-result-alert">Start typing a name</div>
         </div>
       )}
 

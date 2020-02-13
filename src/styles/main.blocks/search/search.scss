@@ -4,14 +4,8 @@
   display: grid;
   grid-template-areas: 'search-form' 'alphabet';
   grid-template-rows: 1fr max-content;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   transition: height 0.2s;
   width: 100%;
-}
-
-.search_minimized {
-  height: auto;
 }
 
 .search_typing {
