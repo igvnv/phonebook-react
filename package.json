@@ -1,7 +1,13 @@
 {
   "name": "phonebook-react",
   "version": "0.1.0",
-  "private": true,
+  "author": "Roman Petrov <rpetrov.ru@gmail.com>",
+  "homepage": "https://rpetrov.ru/phonebook/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igvnv/phonebook-react.git"
+  },
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
