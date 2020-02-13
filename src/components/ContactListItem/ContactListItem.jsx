@@ -4,13 +4,35 @@ import PropTypes from 'prop-types';
 import contactPropType from '../../types/contact';
 
 /**
+ * Callback for click on contact.
+ *
+ * @callback onClickCb
+ * @param {contactType} contact
+ */
+
+/**
  * Displays short contact information.
  *
- * @param {{contact: contactPropType}}
+ * @param {{
+ *   contact: contactPropType,
+ *   onClick?: onClickCb
+ * }}
  */
-const ContactListItem = ({ contact }) => {
+const ContactListItem = ({ contact, onClick }) => {
+  const onClickHandler = () => {
+    if (onClick) {
+      onClick(contact);
+    }
+  };
+
   return (
-    <div className="contacts-list__item">
+    <div
+      className="contacts-list__item"
+      tabIndex="0"
+      role="button"
+      onClick={onClickHandler}
+      onKeyPress={onClickHandler}
+    >
       <div className="contact-preview">
         <img
           src={contact.picture.thumbnail}
@@ -31,6 +53,10 @@ const ContactListItem = ({ contact }) => {
 };
 ContactListItem.propTypes = {
   contact: PropTypes.shape(contactPropType).isRequired,
+  onClick: PropTypes.func,
+};
+ContactListItem.defaultProps = {
+  onClick: null,
 };
 
 export default ContactListItem;

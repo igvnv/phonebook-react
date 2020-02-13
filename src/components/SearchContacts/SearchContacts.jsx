@@ -11,14 +11,22 @@ import normalizedString from '../../helpers/normalizeString';
 import contactType from '../../types/contact';
 
 /**
+ * Callback for selecting a tab.
+ *
+ * @callback onContactSelectCb
+ * @param {contactType} contact
+ */
+
+/**
  * Searches contacts by letter and/or search query and displays them.
  *
  * @param {{
  *   byLetter?: string,
- *   byQuery?: string
+ *   byQuery?: string,
+ *   onContactSelect?: onContactSelectCb
  * }} props
  */
-const SearchContacts = ({ byLetter, byQuery }) => {
+const SearchContacts = ({ byLetter, byQuery, onContactSelect }) => {
   const dispatch = useDispatch();
   /** @type string */
   const loadingState = useSelector((state) => state.contacts.state);
@@ -91,17 +99,24 @@ const SearchContacts = ({ byLetter, byQuery }) => {
         <div className="search-result-alert">No contacts found</div>
       )}
 
-      {!!contactsList.length && <ContactsList contacts={contactsList} />}
+      {!!contactsList.length && (
+        <ContactsList
+          onContactSelect={onContactSelect}
+          contacts={contactsList}
+        />
+      )}
     </div>
   );
 };
 SearchContacts.propTypes = {
   byLetter: PropTypes.string,
   byQuery: PropTypes.string,
+  onContactSelect: PropTypes.func,
 };
 SearchContacts.defaultProps = {
   byLetter: '',
   byQuery: '',
+  onContactSelect: null,
 };
 
 export default SearchContacts;
