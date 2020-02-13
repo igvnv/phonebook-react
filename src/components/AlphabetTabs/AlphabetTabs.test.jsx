@@ -6,8 +6,8 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import AlphabetTabs from './AlphabetTabs';
-import AlphabetTabsLoader from './AlphabetTabsLoader';
 import Config from '../Config';
+import Loader from '../Loader';
 import { LoadingStates } from '../../store/variables';
 import contactsList from '../../../__tests__/data/contacts';
 
@@ -27,7 +27,7 @@ describe('AlphabetTabs component', () => {
         <AlphabetTabs onSelect={onSelect} />
       </Provider>
     );
-    expect(wrapper.find(AlphabetTabsLoader).length).toBe(1);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   it('displays all the letters from config', () => {

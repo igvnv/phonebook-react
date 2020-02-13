@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { LoadingStates } from '../../store/variables';
 import { fetchContactsIfNeeded } from '../../store/actions/contacts';
 import ContactsList from '../ContactsList/ContactsList';
+import ErrorMessage from '../ErrorMessage';
+import Loader from '../Loader';
 import normalizedString from '../../helpers/normalizeString';
 
 // eslint-disable-next-line no-unused-vars
@@ -76,11 +78,15 @@ const SearchContacts = ({ byLetter, byQuery, onContactSelect }) => {
 
   // TODO: Add component with reloader or even move it to the parent component
   if (loadingState === LoadingStates.ERROR) {
-    return <p>Something went wrong...</p>;
+    return (
+      <ErrorMessage>
+        Something went wrong during contacts loading...
+      </ErrorMessage>
+    );
   }
 
   if (loadingState === LoadingStates.LOADING) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   /**

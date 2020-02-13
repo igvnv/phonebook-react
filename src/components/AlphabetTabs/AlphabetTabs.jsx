@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import AlphabetTabsLoader from './AlphabetTabsLoader';
+import Loader from '../Loader';
 import Config from '../Config';
+import ErrorMessage from '../ErrorMessage';
 import { LoadingStates } from '../../store/variables';
 import { fetchContactsIfNeeded } from '../../store/actions/contacts';
 import bemSelector from '../../helpers/bemSelector';
@@ -66,13 +67,16 @@ const AlphabetTabs = ({ selectedLetter, onSelect: onTabSelect }) => {
     dispatch(fetchContactsIfNeeded());
   }
 
-  // TODO: Add component with reloader or even move to the parent component
   if (loadingState === LoadingStates.ERROR) {
-    return <p>Something went wrong...</p>;
+    return (
+      <ErrorMessage>
+        Something went wrong during contacts loading...
+      </ErrorMessage>
+    );
   }
 
   if (loadingState === LoadingStates.LOADING) {
-    return <AlphabetTabsLoader />;
+    return <Loader />;
   }
 
   /**

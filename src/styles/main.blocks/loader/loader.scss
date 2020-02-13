@@ -1,0 +1,43 @@
+.loader {
+  display: block;
+  font-family: $main-font;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 150%;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.loader__text {
+  display: inline-block;
+  background: #fff;
+  border-radius: 10px;
+  color: #000;
+  padding: 15px 20px 15px 60px;
+  position: relative;
+}
+
+.loader__icon {
+  animation: loaderIcon 1.5s infinite;
+  background: #277d8f;
+  border-radius: 3px;
+  display: block;
+  height: 6px;
+  left: 28px;
+  margin-top: -3px;
+  position: absolute;
+  top: 50%;
+  width: 6px;
+}
+
+@keyframes loaderIcon {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(4);
+  }
+}

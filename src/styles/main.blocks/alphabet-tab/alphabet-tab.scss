@@ -1,7 +1,7 @@
 .alphabet-tab {
   color: #fff;
   cursor: pointer;
-  font-family: $default-font;
+  font-family: $main-font;
   font-size: 22px;
   font-weight: 300;
   height: 20px;
@@ -42,7 +42,7 @@
 .alphabet-tab__counter {
   bottom: -12px;
   color: rgba(#fff, 0.5);
-  font-family: $default-font;
+  font-family: $main-font;
   font-size: 9px;
   left: 50%;
   line-height: 11px;
