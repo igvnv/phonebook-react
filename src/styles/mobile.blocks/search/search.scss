@@ -1,4 +1,8 @@
 .search {
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'search-form' 'alphabet';
+  grid-template-rows: 1fr max-content;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }

@@ -29,7 +29,7 @@ import bemSelector from '../../helpers/bemSelector';
  *
  * @param {{
  *   onSearch: onSearchCb,
- *   onMinimized: onMinimizeCb
+ *   onMinimized?: onMinimizeCb
  * }} props
  */
 const SearchBox = ({ onSearch, onMinimized }) => {
@@ -37,15 +37,39 @@ const SearchBox = ({ onSearch, onMinimized }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchInputIsFocused, setSearchInputIsFocused] = useState(false);
   const [minimized, setMinimized] = useState(false);
+  const componentRef = useRef();
 
   /**
    * Adds a pause (200ms) before minimizing. It helps us to avoid the immediately
    * repainting of layout that causes errors with onClick event on tabs.
+   *
+   * Also sets style with new component height for correct animation
+   * (`transition: height` doesn't work with `height: auto`).
    */
   const debounceMinimized = useRef(
     debounce((val) => {
+      const currentComponentHeight = componentRef.current.scrollHeight;
+
       setMinimized(val);
       if (onMinimized) onMinimized(val);
+
+      // Component height after minimized state changed
+      const nextComponentHeight = componentRef.current.scrollHeight;
+
+      // We must set current height for correct resize animation
+      componentRef.current.style.height = `${currentComponentHeight}px`;
+
+      // DO NOT DELETE THIS CONDITION!
+      // We must call element.offsetHeight to cause reflow for element
+      // and trigger transition!
+      if (componentRef.current.scrollHeight) {
+        componentRef.current.style.height = `${nextComponentHeight}px`;
+
+        // Removes height after animation
+        setTimeout(() => {
+          if (componentRef.current) componentRef.current.style.height = null;
+        }, 200);
+      }
     }, 200)
   );
 
@@ -79,6 +103,7 @@ const SearchBox = ({ onSearch, onMinimized }) => {
 
   return (
     <div
+      ref={componentRef}
       className={bemSelector('search', null, [minimized ? 'minimized' : ''])}
     >
       <SearchForm

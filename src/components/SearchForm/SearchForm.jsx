@@ -57,7 +57,7 @@ const SearchForm = ({ onSearch, onFocus, minimized }) => {
           className="search-form-input__input"
           type="text"
           id="search-input"
-          autoComplete="false"
+          autoComplete="off"
           ref={inputRef}
           value={searchInputValue}
           onChange={(e) => {
