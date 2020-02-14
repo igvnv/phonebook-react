@@ -6,7 +6,6 @@ https://rpetrov.ru/phonebook/
 
 ## Features to add
 
-- Animations
 - Display contact position on map
 - Show local time of displayed contact
 - Favicon
