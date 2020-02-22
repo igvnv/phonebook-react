@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce';
 
 import AlphabetTabs from '../AlphabetTabs/AlphabetTabs';
 import SearchForm from '../SearchForm';
 import bemSelector from '../../helpers/bemSelector';
+import cssDurationToMs from '../../helpers/cssDurationToMs';
 
 /**
  * Callback for changing search params.
@@ -37,41 +37,32 @@ const SearchBox = ({ onSearch, onMinimized }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchInputIsFocused, setSearchInputIsFocused] = useState(false);
   const [minimized, setMinimized] = useState(false);
+  const [componentHeight, setComponentHeight] = useState();
   const componentRef = useRef();
 
   /**
-   * Adds a pause (200ms) before minimizing. It helps us to avoid the immediately
-   * repainting of layout that causes errors with onClick event on tabs.
-   *
-   * Also sets style with new component height for correct animation
+   * Sets component height for correct animation
    * (`transition: height` doesn't work with `height: auto`).
    */
-  const debounceMinimized = useRef(
-    debounce((val) => {
-      const currentComponentHeight = componentRef.current.scrollHeight;
+  useEffect(() => {
+    // Component height after animation
+    const finalHeight = `${componentRef.current.scrollHeight}px`;
 
-      setMinimized(val);
-      if (onMinimized) onMinimized(val);
+    // Sets start point for animation
+    componentRef.current.style.height = componentHeight || 'auto';
 
-      // Component height after minimized state changed
-      const nextComponentHeight = componentRef.current.scrollHeight;
+    // DO NOT DELETE THIS CONDITION!
+    // We must call element.offsetHeight to cause reflow for element
+    // and trigger animation!
+    if (componentRef.current.scrollHeight) {
+      componentRef.current.style.height = finalHeight;
 
-      // We must set current height for correct resize animation
-      componentRef.current.style.height = `${currentComponentHeight}px`;
-
-      // DO NOT DELETE THIS CONDITION!
-      // We must call element.offsetHeight to cause reflow for element
-      // and trigger transition!
-      if (componentRef.current.scrollHeight) {
-        componentRef.current.style.height = `${nextComponentHeight}px`;
-
-        // Removes height after animation
-        setTimeout(() => {
-          if (componentRef.current) componentRef.current.style.height = null;
-        }, 200);
-      }
-    }, 200)
-  );
+      // Removes calculated height after animation
+      setTimeout(() => {
+        if (componentRef.current) componentRef.current.style.height = null;
+      }, cssDurationToMs(window.getComputedStyle(componentRef.current).getPropertyValue('transition-duration')));
+    }
+  }, [minimized, componentHeight]);
 
   /**
    * Minimizes the component when letter is selected or
@@ -83,8 +74,11 @@ const SearchBox = ({ onSearch, onMinimized }) => {
       searchQuery ||
       searchInputIsFocused
     );
-    debounceMinimized.current(minimizedStatus);
-  }, [selectedLetter, searchQuery, searchInputIsFocused]);
+
+    setMinimized(minimizedStatus);
+    if (onMinimized) onMinimized(minimizedStatus);
+    setComponentHeight(`${componentRef.current.scrollHeight}px`);
+  }, [selectedLetter, searchQuery, searchInputIsFocused, onMinimized]);
 
   /**
    * Calls `onSearch` callback on search query change or selecting letter.

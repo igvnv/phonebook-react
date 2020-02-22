@@ -94,41 +94,6 @@ describe('SearchForm component', () => {
     ).toBeTruthy();
   });
 
-  it('calls onFocus(true) when input is focused', async () => {
-    const onSearch = jest.fn();
-    const onFocus = jest.fn();
-    const wrapper = shallow(
-      <SearchForm onSearch={onSearch} onFocus={onFocus} minimized={false} />
-    );
-
-    wrapper
-      .find('input.search-form-input__input')
-      .at(0)
-      .simulate('focus');
-
-    expect(onFocus.mock.calls).toEqual([[true]]);
-  });
-
-  it('calls onFocus(false) when focus leaves input', async () => {
-    const onSearch = jest.fn();
-    const onFocus = jest.fn();
-    const wrapper = shallow(
-      <SearchForm onSearch={onSearch} onFocus={onFocus} minimized={false} />
-    );
-
-    wrapper
-      .find('input.search-form-input__input')
-      .at(0)
-      .simulate('focus');
-
-    wrapper
-      .find('input.search-form-input__input')
-      .at(0)
-      .simulate('blur');
-
-    expect(onFocus.mock.calls).toEqual([[true], [false]]);
-  });
-
   it('calls onSearch when input value is changed', async () => {
     const onSearch = jest.fn();
     const onFocus = jest.fn();
@@ -142,5 +107,73 @@ describe('SearchForm component', () => {
       .simulate('change', { target: { value: 'query value' } });
 
     expect(onSearch.mock.calls).toEqual([['query value']]);
+  });
+
+  describe('input focus debounce', () => {
+    jest.useFakeTimers();
+
+    it('waits before firing onFocus event', () => {
+      const onSearch = jest.fn();
+      const onFocus = jest.fn();
+      const wrapper = shallow(
+        <SearchForm onSearch={onSearch} onFocus={onFocus} minimized={false} />
+      );
+
+      wrapper
+        .find('input.search-form-input__input')
+        .at(0)
+        .simulate('focus');
+
+      expect(onFocus).not.toBeCalled();
+
+      jest.runAllTimers();
+
+      expect(onFocus).toBeCalled();
+      expect(onFocus).toBeCalledTimes(1);
+    });
+
+    it('calls onFocus(true) when input is focused', () => {
+      const onSearch = jest.fn();
+      const onFocus = jest.fn();
+      const wrapper = shallow(
+        <SearchForm onSearch={onSearch} onFocus={onFocus} minimized={false} />
+      );
+
+      wrapper
+        .find('input.search-form-input__input')
+        .at(0)
+        .simulate('focus');
+
+      jest.runAllTimers();
+
+      expect(onFocus.mock.calls).toEqual([[true]]);
+    });
+
+    it('calls onFocus(false) when focus leaves input', () => {
+      const onSearch = jest.fn();
+      const onFocus = jest.fn();
+      const wrapper = shallow(
+        <SearchForm onSearch={onSearch} onFocus={onFocus} minimized={false} />
+      );
+
+      wrapper
+        .find('input.search-form-input__input')
+        .at(0)
+        .simulate('focus');
+
+      jest.runAllTimers();
+      jest.advanceTimersByTime(200);
+
+      wrapper
+        .find('input.search-form-input__input')
+        .at(0)
+        .simulate('blur');
+
+      jest.runAllTimers();
+
+      expect(onFocus).toBeCalled();
+      expect(onFocus).toBeCalledTimes(2);
+      expect(onFocus.mock.calls).toEqual([[true], [false]]);
+    });
   });
 });

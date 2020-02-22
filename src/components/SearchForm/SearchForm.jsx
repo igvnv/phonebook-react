@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 
 import bemSelector from '../../helpers/bemSelector';
 
@@ -30,6 +31,17 @@ const SearchForm = ({ onSearch, onFocus, minimized }) => {
   const [searchInputValue, setSearchInputValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef(null);
+
+  /**
+   * Adds a pause (200ms) before minimizing. It helps us to avoid the immediately
+   * repainting of layout that makes impossible to click on a tab.
+   */
+  const debounceFocus = useRef(
+    debounce((focused) => {
+      onFocus(focused);
+      setIsFocused(focused);
+    }, 200)
+  );
 
   return (
     <form
@@ -65,12 +77,10 @@ const SearchForm = ({ onSearch, onFocus, minimized }) => {
             setSearchInputValue(e.target.value);
           }}
           onFocus={() => {
-            onFocus(true);
-            setIsFocused(true);
+            debounceFocus.current(true);
           }}
           onBlur={() => {
-            onFocus(false);
-            setIsFocused(false);
+            debounceFocus.current(false);
           }}
         />
         {!searchInputValue && (
