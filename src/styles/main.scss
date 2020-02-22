@@ -4,42 +4,42 @@
 
 @import './config.scss';
 
-@import './main.blocks/alphabet/alphabet.scss';
-@import './main.blocks/alphabet-tab/alphabet-tab.scss';
-@import './main.blocks/body/body.scss';
-@import './main.blocks/contact/contact.scss';
-@import './main.blocks/contact-attributes/contact-attributes.scss';
-@import './main.blocks/contact-preview/contact-preview.scss';
-@import './main.blocks/contacts-list/contacts-list.scss';
-@import './main.blocks/error-message/error-message.scss';
-@import './main.blocks/loader/loader.scss';
-@import './main.blocks/popup/popup.scss';
-@import './main.blocks/search/search.scss';
-@import './main.blocks/search-form/search-form.scss';
-@import './main.blocks/search-form-input/search-form-input.scss';
-@import './main.blocks/search-result/search-result.scss';
-@import './main.blocks/search-result-alert/search-result-alert.scss';
+@import './main.blocks/alphabet.scss';
+@import './main.blocks/alphabet-tab.scss';
+@import './main.blocks/body.scss';
+@import './main.blocks/contact.scss';
+@import './main.blocks/contact-attributes.scss';
+@import './main.blocks/contact-preview.scss';
+@import './main.blocks/contacts-list.scss';
+@import './main.blocks/error-message.scss';
+@import './main.blocks/loader.scss';
+@import './main.blocks/popup.scss';
+@import './main.blocks/search.scss';
+@import './main.blocks/search-form.scss';
+@import './main.blocks/search-form-input.scss';
+@import './main.blocks/search-result.scss';
+@import './main.blocks/search-result-alert.scss';
 
 @media (max-width: $tablet-width) {
   // phone styles
-  @import './mobile.blocks/contacts-list/contacts-list.scss';
-  @import './mobile.blocks/popup/popup.scss';
-  @import './mobile.blocks/search/search.scss';
-  @import './mobile.blocks/search-form-input/search-form-input.scss';
+  @import './mobile.blocks/contacts-list.scss';
+  @import './mobile.blocks/popup.scss';
+  @import './mobile.blocks/search.scss';
+  @import './mobile.blocks/search-form-input.scss';
 }
 @media (min-width: $tablet-width+1) and (max-width: $desktop-width) {
   // tablet styles
-  @import './tablet.blocks/body/body.scss';
-  @import './tablet.blocks/contacts-list/contacts-list.scss';
-  @import './tablet.blocks/popup/popup.scss';
-  @import './tablet.blocks/search/search.scss';
-  @import './tablet.blocks/wrapper/wrapper.scss';
+  @import './tablet.blocks/body.scss';
+  @import './tablet.blocks/contacts-list.scss';
+  @import './tablet.blocks/popup.scss';
+  @import './tablet.blocks/search.scss';
+  @import './tablet.blocks/wrapper.scss';
 }
 @media (min-width: $desktop-width+1) {
   // desktop styles
-  @import './desktop.blocks/alphabet-tab/alphabet-tab.scss';
-  @import './desktop.blocks/contacts-list/contacts-list.scss';
-  @import './desktop.blocks/popup/popup.scss';
-  @import './desktop.blocks/search/search.scss';
-  @import './desktop.blocks/search-result/search-result.scss';
+  @import './desktop.blocks/alphabet-tab.scss';
+  @import './desktop.blocks/contacts-list.scss';
+  @import './desktop.blocks/popup.scss';
+  @import './desktop.blocks/search.scss';
+  @import './desktop.blocks/search-result.scss';
 }
