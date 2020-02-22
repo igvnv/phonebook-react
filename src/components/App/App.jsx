@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import '../../styles/main.scss';
 
-import SearchBox from '../SearchBox/SearchBox';
+import SearchBox from '../SearchBox';
 import SearchContacts from '../SearchContacts';
 import ContactCard from '../ContactCard';
 
